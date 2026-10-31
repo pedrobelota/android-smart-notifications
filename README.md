@@ -52,6 +52,12 @@ O listener descarta notificações do próprio pacote no canal `smart_summary_ch
 
 ## Prompt e limites de inferência
 
+**Dataset no Hugging Face:** [phbg/smart-notifications-synthetic](https://huggingface.co/datasets/phbg/smart-notifications-synthetic),
+com 3.707 exemplos sintéticos, splits, auditoria e proveniência. Sua publicação não
+significa que o Gemma utilizado tenha sido treinado nesses dados.
+Veja também a [coleção de datasets e modelos utilizados](https://huggingface.co/collections/phbg/devtitans-and-pibic-ai-engineering-6ae553217b5be2d991b7e904),
+com atribuição dos checkpoints de terceiros.
+
 `PromptBuilder` normaliza linhas, remove duplicatas e mantém até 1.600 caracteres recentes do conteúdo. O prompt completo inclui também estas instruções:
 
 ```text
