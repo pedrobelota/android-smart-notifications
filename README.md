@@ -106,6 +106,17 @@ O modelo não está incluído no APK. Inferência offline não equivale a privac
 
 ## Próxima fase
 
+**Experimento de fine-tuning preparado, ainda não executado:**
+[abrir piloto QLoRA no Colab](https://colab.research.google.com/github/pedrobelota/android-smart-notifications/blob/feat/poc-litert-gemma/notebooks/notification_qlora_pilot.ipynb).
+O notebook compara Gemma 3 1B IT antes/depois de um piloto LoRA de 64 passos,
+com dataset fixado por revisão, alvos mascarados e exportação de adaptador e relatório.
+Requer acesso ao modelo e uma GPU gratuita compatível disponível; não contrata
+recursos nem publica modelos automaticamente. As células foram verificadas por
+análise sintática; execução em GPU e compatibilidade das dependências no Colab
+ainda precisam ser verificadas. O modelo Android Gemma 4 E2B permanece separado.
+Consulte o [protocolo](docs/finetuning-experiment.md). Não há resultado de treinamento
+ou ganho de qualidade atribuído a esse notebook nesta etapa.
+
 Criar um contrato AIDL assíncrono entre SystemUI e um serviço de inferência em **processo separado**, com autenticação/permissões, fila limitada, cancelamento, timeouts e recuperação após morte do Binder. Não carregar o modelo dentro de SystemUI ou system_server. A integração Soong/AOSP, a política de ciclo de vida e os testes sob pressão de memória ainda não estão concluídos.
 
 Veja as [notas de entrega](RELEASE_NOTES.md) e o [relatório de bancada](STATUS_REPORT_POC.md).
