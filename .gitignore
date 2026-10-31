@@ -10,3 +10,7 @@ captures/
 *.task
 __pycache__/
 *.py[cod]
+devtitans-qlora-pilot*/
+*.safetensors
+.env
+.env.*

@@ -111,8 +111,9 @@ O modelo não está incluído no APK. Inferência offline não equivale a privac
 O notebook compara Gemma 3 1B IT antes/depois de um piloto LoRA de 64 passos,
 com dataset fixado por revisão, alvos mascarados e exportação de adaptador e relatório.
 Requer acesso ao modelo e uma GPU gratuita compatível disponível; não contrata
-recursos nem publica modelos automaticamente. As células foram verificadas por
-análise sintática; execução em GPU e compatibilidade das dependências no Colab
+recursos nem publica modelos automaticamente. As células passaram por análise
+sintática e a preparação dos 3.707 exemplos foi verificada com o tokenizer real;
+execução de treinamento em GPU e compatibilidade completa das dependências no Colab
 ainda precisam ser verificadas. O modelo Android Gemma 4 E2B permanece separado.
 Consulte o [protocolo](docs/finetuning-experiment.md). Não há resultado de treinamento
 ou ganho de qualidade atribuído a esse notebook nesta etapa.
