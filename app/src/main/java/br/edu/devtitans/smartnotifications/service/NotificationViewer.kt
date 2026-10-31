@@ -41,7 +41,7 @@ class NotificationViewer(
         synchronized(pendingTexts) {
             pendingTexts.add(formattedNotification)
             
-            Log.d("NotificationViewer", "Notificação capturada: $formattedNotification")
+            Log.d("NotificationViewer", "Notificação recebida para agrupamento")
             
             debounceJob?.cancel()
             debounceJob = scope.launch {
@@ -69,14 +69,14 @@ class NotificationViewer(
                 finalSummary = partial
                 _latestSummary.value = "Processando LLM...\n$partial"
             }
-            Log.i("NotificationViewer", "=== RESUMO FINALIZADO ===\n$finalSummary\n=========================")
+            Log.i("NotificationViewer", "Resumo gerado")
             _latestSummary.value = "Lote de ${textsToProcess.size} notificações:\n$finalSummary"
             
             // Disparar a notificação real para a barra de status do Android
             showSystemNotification(textsToProcess.size, finalSummary)
             
         } catch (e: Exception) {
-            Log.e("NotificationViewer", "Erro ao gerar resumo", e)
+            Log.e("NotificationViewer", "Falha de geração: ${e.javaClass.simpleName}")
             _latestSummary.value = "Erro ao processar notificações."
         }
     }

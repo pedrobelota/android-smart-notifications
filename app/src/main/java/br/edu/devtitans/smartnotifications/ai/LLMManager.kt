@@ -98,7 +98,7 @@ class LLMManager(context: Context) : TextGenerator {
                         topP = 0.8,
                         temperature = 0.1,
                     ),
-                    // Dataset targets are at most 30 words. A hard generation bound avoids long,
+                    // Dataset targets are at most 25 words. A hard generation bound avoids long,
                     // repetitive answers and cuts latency/KV-cache growth on constrained devices.
                     maxOutputToken = 48,
                 ),

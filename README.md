@@ -1,5 +1,14 @@
 # Notificações Inteligentes — PoC LiteRT-LM + Gemma
 
+
+[![Android CI](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml/badge.svg)](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml)
+[![Security](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/security.yml/badge.svg)](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/security.yml)
+
+**IA generativa no dispositivo:** integração de Gemma 4 E2B com LiteRT-LM para transformar rajadas de notificações em resumos em português. O trabalho reúne engenharia de prompt, streaming de tokens, gestão de recursos nativos, preparação de dados para SFT e integração Android — sem depender de uma API de LLM em nuvem durante a inferência.
+
+**Guia para avaliação técnica:** [evidências, autoria e limites](docs/EVIDENCE.md) · [model card](MODEL_CARD.md) · [dataset](dataset_optimized/README.md) · [testes](app/src/test/java/br/edu/devtitans/smartnotifications/ai).
+
+O status de conclusão abaixo refere-se à PoC de bancada relatada; a integração AOSP e a validação de produção permanecem pendentes.
 **STATUS: CONCLUÍDO (PoC Validada On-Device)**
 
 Repositório independente de portfólio de Pedro Henrique, derivado da branch
@@ -82,7 +91,7 @@ Em Linux/macOS, use `./gradlew testDebugUnitTest assembleDebug`. APK: `app/build
 3. Selecione o `.litertlm` no app e aguarde “Modelo pronto”. O arquivo é copiado para o armazenamento privado.
 4. Envie notificações de teste sem dados pessoais, aguarde o debounce e confira o resumo e a ausência de recursão.
 
-O modelo não está incluído no APK. Inferência offline não equivale a privacidade absoluta: a implementação atual registra conteúdo e resumos em logs de diagnóstico. Não use dados pessoais nesses testes; remover esses logs é um requisito antes de produção. Android pode suspender ou encerrar o processo sob pressão de memória.
+O modelo não está incluído no APK. Inferência offline não equivale a privacidade absoluta: esta revisão removeu o conteúdo das mensagens, os resumos e detalhes de exceções dos logs de geração. Isso não constitui garantia de privacidade absoluta; use dados sintéticos e revise backup, permissões e exposição do receiver de teste antes de produção. Android pode suspender ou encerrar o processo sob pressão de memória.
 
 ## Próxima fase
 
