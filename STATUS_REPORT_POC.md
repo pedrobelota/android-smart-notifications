@@ -8,7 +8,7 @@
 ## 1. Contexto do Projeto
 O projeto **Notificações Inteligentes** (Hands-on Final DevTitans) visa criar uma solução nativa no Android (AOSP) capaz de interceptar rajadas de notificações de um mesmo contexto, utilizar uma Inteligência Artificial local no dispositivo (LLM) para resumi-las, e exibir a síntese de forma nativa ao usuário.
 
-O objetivo é reduzir a fadiga sem enviar conteúdo para uma API de inferência em nuvem. A implementação ainda registra conteúdo em logs de diagnóstico; inferência local não garante privacidade absoluta.
+O objetivo é reduzir a fadiga sem enviar conteúdo para uma API de inferência em nuvem. A revisão de portfólio retirou conteúdo dos logs de geração; inferência local não garante privacidade absoluta.
 
 Devido à complexidade de compilar o AOSP, a arquitetura foi dividida em duas frentes de trabalho:
 1.  **Frente AOSP (Branch `NotificationService` - Vitor):** Preparação do gancho nativo dentro do `SystemUI` para interceptar as notificações na camada do sistema operacional.
@@ -18,7 +18,7 @@ Devido à complexidade de compilar o AOSP, a arquitetura foi dividida em duas fr
 
 ## 2. O que foi construído e validado (Proof of Concept)
 
-A frente da Inteligência Artificial foi **100% implementada e validada** em um dispositivo físico (Motorola XT2125-4), comprovando a viabilidade técnica de rodar um modelo de 2 Bilhões de parâmetros localmente.
+A frente da Inteligência Artificial foi **implementada e validada no escopo de bancada relatado** em um dispositivo físico (Motorola XT2125-4), comprovando a viabilidade técnica de rodar o modelo Gemma 4 E2B localmente.
 
 ### 2.1. Entregáveis Técnicos:
 *   **Integração do LiteRT-LM com Gemma:** O aplicativo carrega o modelo quantizado `gemma-4-E2B-it.litertlm` (2.5GB) para a memória do dispositivo e gera resumos coerentes de textos de forma off-line.
@@ -53,4 +53,3 @@ Dessa forma, isolamos o processamento massivo de Inteligência Artificial da ren
 ## Consolidação documental — 30/10/2026
 
 STATUS: CONCLUÍDO (PoC Validada On-Device). As observações acima são relatos de bancada do responsável, não medições repetidas nesta revisão. A identificação precisa do modelo é Gemma 4 E2B; tamanho do arquivo não equivale a RAM residente. Consulte README.md e MODEL_CARD.md para configurações, métricas relatadas e limites atuais.
-
