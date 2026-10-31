@@ -2,6 +2,12 @@
 
 **STATUS: CONCLUÍDO (PoC Validada On-Device)**
 
+Repositório independente de portfólio de Pedro Henrique, derivado da branch
+`feat/poc-litert-gemma` do [projeto colaborativo DevTitans](https://github.com/miguelmoraesx/android-smart-notifications),
+com histórico e autoria dos colaboradores preservados. A documentação de fechamento
+é mantida nesta cópia; ela não transfere a autoria exclusiva do projeto nem atribui
+uma nova licença ao código original.
+
 Hands-on Final DevTitans — Turma 9. A PoC captura notificações externas autorizadas pelo Android, agrupa rajadas e gera um resumo local, sem API de inferência em nuvem. A integração AIDL com AOSP/SystemUI é a próxima fase.
 
 ## Validação em hardware físico
