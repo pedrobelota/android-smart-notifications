@@ -16,6 +16,15 @@ Este portfólio apresenta uma aplicação de IA generativa on-device: um LLM pro
 
 ## Autoria e assistência de IA
 
+Validação independente de software em 30/10/2026: o [Android CI](https://github.com/pedrobelota/android-smart-notifications/actions/runs/41158328323)
+executou `testDebugUnitTest assembleDebug` com sucesso em JDK 17/Linux. A validação
+do dataset confirmou 2.965 exemplos de treino, 371 de validação e 371 de teste,
+sem entradas duplicadas entre splits e com saídas de até 25 palavras. O ZIP contém
+os mesmos cinco arquivos publicados, equivalentes após normalizar finais de linha.
+Gitleaks não encontrou segredos no histórico examinado. Não havia dispositivo ADB
+autorizado conectado nesta revisão. Esses resultados não comprovam factualidade
+dos resumos, generalização ou desempenho físico do modelo.
+
 Projeto colaborativo DevTitans, com histórico original preservado. O relatório atribui a frente LLM a Pedro Henrique e a frente AOSP a outro colaborador. O histórico permite inspecionar as contribuições; não se reivindica autoria exclusiva do sistema.
 
 Assistentes de IA foram usados na revisão técnica, documentação e manutenção deste portfólio. Essa assistência não substitui a responsabilidade do autor por explicar o código e os resultados. Não há evidência publicada de um checkpoint próprio treinado com o dataset; a expressão correta é integração de LLM e preparação de dados para eventual SFT.

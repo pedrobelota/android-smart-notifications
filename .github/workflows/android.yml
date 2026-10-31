@@ -16,3 +16,13 @@ jobs:
         run: python3 tools/verify_dataset.py
       - name: Unit tests and debug APK (no model download)
         run: bash gradlew --no-daemon testDebugUnitTest assembleDebug
+      - name: Publish demo APK and test reports
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: smart-notifications-demo-and-tests
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/test-results/testDebugUnitTest/*.xml
+            app/build/reports/tests/testDebugUnitTest/

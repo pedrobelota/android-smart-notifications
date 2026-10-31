@@ -78,6 +78,11 @@ O `dataset_optimized/` fornece pares `input`/`output`, alvos de até 25 palavras
 
 ## Executar e verificar
 
+Para experimentar sem compilar, abra uma execução bem-sucedida do [Android CI](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml)
+e baixe o artefato `smart-notifications-demo-and-tests` (retido por 14 dias; o GitHub pode exigir login).
+Ele inclui APK de debug e relatórios de testes. Os pesos precisam ser obtidos separadamente;
+é uma demonstração de pesquisa, não uma versão de produção.
+
 Requer JDK 17, Android SDK 37 e Android Studio compatível com AGP 9.1.1. O projeto usa Kotlin 2.4.20 e Gradle 9.3.1. Para a bancada, prefira dispositivo ARM64 com memória e armazenamento suficientes.
 
 ```powershell
