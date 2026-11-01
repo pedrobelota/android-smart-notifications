@@ -1,6 +1,7 @@
-# Proposed experiment: notification summarization fine-tuning
+# Protocol: notification summarization fine-tuning
 
-Status: design only. No training run or improved model is claimed.
+Status: pilot training completed on a free Colab Tesla T4. See the
+[results](finetuning-results.md). No general quality improvement is claimed.
 
 ## Research question
 Does supervised fine-tuning with LoRA improve concise Portuguese notification summaries compared with the same pretrained checkpoint and prompt, without increasing unsupported facts?
@@ -22,5 +23,5 @@ Publish the trained adapter, adapter config, base-model revision, training scrip
 ## Android deployment is a separate gate
 Merge/convert/quantize only through a supported architecture/export path. Repeat quality and device tests after conversion; do not replace the working PoC model merely because training completed. Compatibility with LiteRT-LM 0.17.0 must be verified rather than assumed.
 
-## Compute decision pending
-Local inventory: GTX 1050 Ti, 4 GiB VRAM, approximately 16 GiB system RAM. Select a smaller trainable checkpoint and/or an available cloud GPU after compatibility and memory checks. No paid resource, unattended long training or new model download was started by this design step.
+## Compute decision
+Local inventory: GTX 1050 Ti, 4 GiB VRAM, approximately 16 GiB system RAM. The pilot therefore used `google/gemma-3-1b-it` with QLoRA on a free Colab Tesla T4. No paid compute was used. The execution ran for 64 steps and exported the adapter, configuration and before/after generations.

@@ -18,7 +18,7 @@
 | Engenharia de IA | Prompt, streaming, limites de contexto e ciclo de vida do engine; [arquitetura](#arquitetura-implementada) |
 | Dados públicos | [3.707 exemplos sintéticos no Hugging Face](https://huggingface.co/datasets/phbg/smart-notifications-synthetic) |
 | Reproduzir o software | [Build e testes no CI](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml), com APK nos artefatos |
-| Investigar adaptação do modelo | [Piloto QLoRA](notebooks/README.md), com treinamento e avaliação ainda pendentes |
+| Investigar adaptação do modelo | [Piloto QLoRA concluído](docs/finetuning-results.md), com adaptador e resultados no Hugging Face |
 
 **Stack:** Kotlin · Android · LiteRT-LM · Gemma · Python · Hugging Face · GitHub Actions.
 
@@ -120,17 +120,19 @@ O modelo não está incluído no APK. Inferência offline não equivale a privac
 
 ## Próxima fase
 
-**Experimento de fine-tuning preparado, ainda não executado:**
+**Experimento de fine-tuning executado:**
 [abrir piloto QLoRA no Colab](https://colab.research.google.com/github/pedrobelota/android-smart-notifications/blob/feat/poc-litert-gemma/notebooks/notification_qlora_pilot.ipynb).
 O notebook compara Gemma 3 1B IT antes/depois de um piloto LoRA de 64 passos,
 com dataset fixado por revisão, alvos mascarados e exportação de adaptador e relatório.
-Requer acesso ao modelo e uma GPU gratuita compatível disponível; não contrata
-recursos nem publica modelos automaticamente. As células passaram por análise
-sintática e a preparação dos 3.707 exemplos foi verificada com o tokenizer real;
-execução de treinamento em GPU e compatibilidade completa das dependências no Colab
-ainda precisam ser verificadas. O modelo Android Gemma 4 E2B permanece separado.
-Consulte o [protocolo](docs/finetuning-experiment.md). Não há resultado de treinamento
-ou ganho de qualidade atribuído a esse notebook nesta etapa.
+O piloto foi executado em uma Tesla T4 com 512 exemplos, 16 exemplos de validação e
+64 passos; alterou 104 tensores treináveis e gerou um adaptador PEFT. A loss de
+validação caiu de 1,2532 no passo 32 para 1,0369 no passo 64, mas a inspeção das
+respostas encontrou informação inventada e erros de estado. Portanto, há evidência
+de treinamento concluído, sem evidência suficiente de ganho geral de qualidade.
+
+Veja o [relatório e as limitações](docs/finetuning-results.md) e o
+[adaptador publicado no Hugging Face](https://huggingface.co/phbg/gemma-3-1b-smart-notifications-qlora-pilot).
+O modelo Android Gemma 4 E2B permanece separado e não usa diretamente esse adaptador.
 
 Criar um contrato AIDL assíncrono entre SystemUI e um serviço de inferência em **processo separado**, com autenticação/permissões, fila limitada, cancelamento, timeouts e recuperação após morte do Binder. Não carregar o modelo dentro de SystemUI ou system_server. A integração Soong/AOSP, a política de ciclo de vida e os testes sob pressão de memória ainda não estão concluídos.
 
