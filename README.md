@@ -1,4 +1,4 @@
-# Notificações Inteligentes — PoC LiteRT-LM + Gemma
+# Smart Notifications | IA generativa no Android
 
 
 [![Android CI](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml/badge.svg)](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml)
@@ -8,8 +8,22 @@
 
 **Guia para avaliação técnica:** [evidências, autoria e limites](docs/EVIDENCE.md) · [model card](MODEL_CARD.md) · [dataset](dataset_optimized/README.md) · [testes](app/src/test/java/br/edu/devtitans/smartnotifications/ai).
 
+## O projeto em um minuto
+
+**Problema:** rajadas de notificações repetem informações e dispersam ações importantes. **Solução:** agrupar mensagens e gerar um resumo curto em português com um LLM executado no próprio aparelho.
+
+| Para explorar | Onde começar |
+| --- | --- |
+| Minha frente no projeto colaborativo | Integração LLM; [autoria e evidências](docs/EVIDENCE.md) |
+| Engenharia de IA | Prompt, streaming, limites de contexto e ciclo de vida do engine; [arquitetura](#arquitetura-implementada) |
+| Dados públicos | [3.707 exemplos sintéticos no Hugging Face](https://huggingface.co/datasets/phbg/smart-notifications-synthetic) |
+| Reproduzir o software | [Build e testes no CI](https://github.com/pedrobelota/android-smart-notifications/actions/workflows/android.yml), com APK nos artefatos |
+| Investigar adaptação do modelo | [Piloto QLoRA](notebooks/README.md), com treinamento e avaliação ainda pendentes |
+
+**Stack:** Kotlin · Android · LiteRT-LM · Gemma · Python · Hugging Face · GitHub Actions.
+
 O status de conclusão abaixo refere-se à PoC de bancada relatada; a integração AOSP e a validação de produção permanecem pendentes.
-**STATUS: CONCLUÍDO (PoC Validada On-Device)**
+**Estado atual:** PoC on-device com validação de bancada relatada; build e testes automatizados disponíveis. Fine-tuning e integração AOSP em desenvolvimento.
 
 Repositório independente de portfólio de Pedro Henrique, derivado da branch
 `feat/poc-litert-gemma` do [projeto colaborativo DevTitans](https://github.com/miguelmoraesx/android-smart-notifications),
